@@ -6,7 +6,8 @@ namespace ToyRobotSimulator
     {
         public bool IsValid(string command)
         {
-            return command.Equals("Move", StringComparison.OrdinalIgnoreCase);
+            return command.Equals("Move", StringComparison.OrdinalIgnoreCase) ||
+                   command.Equals("left", StringComparison.OrdinalIgnoreCase);
         }
     }
 }
