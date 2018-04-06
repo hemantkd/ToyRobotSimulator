@@ -57,5 +57,14 @@ namespace ToyRobotSimulator.Tests
 
             Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
+
+        [TestCase("PLACE WEST,0,NORTH")]
+        [TestCase("PLACE 0,EAST,0")]
+        public void ShouldReturnFalse_IfPlaceCommandHasANonIntegerXOrYParameter(string placeCommand)
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsFalse(commandValidator.IsValid(placeCommand));
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace ToyRobotSimulator
@@ -24,7 +25,24 @@ namespace ToyRobotSimulator
             string[] commandParameters = SplitIntoIndividualParameters(commandSplit);
 
             return PlaceCommandHasCorrectNumberOfParameters(commandParameters) &&
-                AllParametersHaveValue(commandParameters);
+                AllParametersHaveValue(commandParameters) &&
+                XParameterIsValid(commandParameters[0]) &&
+                YParameterIsValid(commandParameters[1]);
+        }
+
+        private bool YParameterIsValid(string yParameter)
+        {
+            return IsAnInteger(yParameter);
+        }
+
+        private bool XParameterIsValid(string xParameter)
+        {
+            return IsAnInteger(xParameter);
+        }
+
+        private bool IsAnInteger(string parameter)
+        {
+            return int.TryParse(parameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
 
         private bool AllParametersHaveValue(string[] commandParameters)
