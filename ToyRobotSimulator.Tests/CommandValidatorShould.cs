@@ -6,10 +6,11 @@ namespace ToyRobotSimulator.Tests
     public class CommandValidatorShould
     {
         [Test]
-        public void Test()
+        public void ShouldReturnTrue_ForMoveCommand()
         {
-            Assert.IsTrue(true);
+            var commandValidator = new CommandValidator();
+
+            Assert.IsTrue(commandValidator.IsValid("MOVE"));
         }
-        
     }
 }
