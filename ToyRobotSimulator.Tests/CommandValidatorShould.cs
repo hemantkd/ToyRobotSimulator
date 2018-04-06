@@ -20,5 +20,13 @@ namespace ToyRobotSimulator.Tests
 
             Assert.IsTrue(commandValidator.IsValid("LEFT"));
         }
+
+        [Test]
+        public void ShouldReturnTrue_ForRightCommand()
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsTrue(commandValidator.IsValid("RIGHT"));
+        }
     }
 }
