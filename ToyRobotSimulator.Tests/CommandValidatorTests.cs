@@ -3,7 +3,7 @@
 namespace ToyRobotSimulator.Tests
 {
     [TestFixture]
-    public class CommandValidatorShould
+    public class CommandValidatorTests
     {
         [Test]
         public void ShouldReturnTrue_ForMoveCommand()
@@ -43,6 +43,19 @@ namespace ToyRobotSimulator.Tests
             var commandValidator = new CommandValidator();
 
             Assert.IsTrue(commandValidator.IsValid("PLACE 0,0,NORTH"));
+        }
+
+        [TestCase("PLACE 0,NORTH")]
+        [TestCase("PLACE 0,0,0,NORTH")]
+        [TestCase("PLACE 0,0")]
+        [TestCase("PLACE 0,0,")]
+        [TestCase("PLACE ,0,")]
+        [TestCase("PLACE ,0,NORTH")]
+        public void ShouldReturnFalse_IfPlaceCommandHasElementsMissing(string placeCommand)
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
     }
 }
