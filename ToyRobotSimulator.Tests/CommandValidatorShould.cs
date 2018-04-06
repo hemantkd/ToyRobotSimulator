@@ -36,5 +36,13 @@ namespace ToyRobotSimulator.Tests
 
             Assert.IsTrue(commandValidator.IsValid("REPORT"));
         }
+
+        [Test]
+        public void ShouldReturnTrue_ForPlaceCommand()
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsTrue(commandValidator.IsValid("PLACE 0,0,NORTH"));
+        }
     }
 }

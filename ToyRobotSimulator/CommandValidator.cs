@@ -9,7 +9,8 @@ namespace ToyRobotSimulator
             return command.Equals("Move", StringComparison.OrdinalIgnoreCase) ||
                    command.Equals("left", StringComparison.OrdinalIgnoreCase) ||
                    command.Equals("Right", StringComparison.OrdinalIgnoreCase) ||
-                   command.Equals("RepOrt", StringComparison.OrdinalIgnoreCase);
+                   command.Equals("RepOrt", StringComparison.OrdinalIgnoreCase) ||
+                   command.StartsWith("place", StringComparison.OrdinalIgnoreCase);
         }
     }
 }
