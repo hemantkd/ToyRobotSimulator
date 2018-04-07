@@ -6,6 +6,8 @@ namespace ToyRobotSimulator
 {
     public class CommandValidator
     {
+        private const bool IsNotValid = false;
+
         public bool IsValid(string command)
         {
             return command.Equals("Move", StringComparison.OrdinalIgnoreCase) ||
@@ -20,7 +22,7 @@ namespace ToyRobotSimulator
         {
             string[] commandSplit = command.Split(' ');
 
-            if (PlaceCommandHasNoParameters(commandSplit)) return false;
+            if (PlaceCommandHasNoParameters(commandSplit)) return IsNotValid;
 
             string[] commandParameters = SplitIntoIndividualParameters(commandSplit);
 
@@ -30,19 +32,32 @@ namespace ToyRobotSimulator
                 YParameterIsValid(commandParameters[1]);
         }
 
-        private bool YParameterIsValid(string yParameter)
-        {
-            return IsAnInteger(yParameter);
-        }
-
         private bool XParameterIsValid(string xParameter)
         {
-            return IsAnInteger(xParameter);
+            if (IsNotAnInteger(xParameter)) return IsNotValid;
+
+            var x = int.Parse(xParameter, NumberStyles.Integer);
+
+            return IsInTheRange(x);
         }
 
-        private bool IsAnInteger(string parameter)
+        private bool YParameterIsValid(string yParameter)
         {
-            return int.TryParse(parameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
+            if(IsNotAnInteger(yParameter)) return IsNotValid;
+            
+            var y = int.Parse(yParameter, NumberStyles.Integer);
+            
+            return IsInTheRange(y);
+        }
+
+        private bool IsInTheRange(int parameter)
+        {
+            return parameter >= 0 && parameter <= 5;
+        }
+
+        private bool IsNotAnInteger(string parameter)
+        {
+            return !int.TryParse(parameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
 
         private bool AllParametersHaveValue(string[] commandParameters)

@@ -51,7 +51,7 @@ namespace ToyRobotSimulator.Tests
         [TestCase("PLACE 0,0,")]
         [TestCase("PLACE ,0,")]
         [TestCase("PLACE ,0,NORTH")]
-        public void ShouldReturnFalse_IfPlaceCommandHasElementsMissing(string placeCommand)
+        public void ShouldReturnFalse_IfPlaceCommandHas_ElementsMissing(string placeCommand)
         {
             var commandValidator = new CommandValidator();
 
@@ -60,7 +60,18 @@ namespace ToyRobotSimulator.Tests
 
         [TestCase("PLACE WEST,0,NORTH")]
         [TestCase("PLACE 0,EAST,0")]
-        public void ShouldReturnFalse_IfPlaceCommandHasANonIntegerXOrYParameter(string placeCommand)
+        public void ShouldReturnFalse_IfPlaceCommandHas_ANonIntegerXOrYParameter(string placeCommand)
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsFalse(commandValidator.IsValid(placeCommand));
+        }
+
+        [TestCase("PLACE -1,2,SOUTH")]
+        [TestCase("PLACE 6,2,SOUTH")]
+        [TestCase("PLACE 4,-1,SOUTH")]
+        [TestCase("PLACE 3,6,SOUTH")]
+        public void ShouldReturnFalse_IfPlaceCommandHas_OutOfRangeXOrYParameter(string placeCommand)
         {
             var commandValidator = new CommandValidator();
 
