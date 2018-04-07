@@ -37,6 +37,11 @@
             Facing = Facing == Direction.North ? Direction.West : Facing - 1;
         }
 
+        public void RotateRight()
+        {
+            Facing = Facing == Direction.West ? Direction.North : Facing + 1;
+        }
+
         private bool IsNotOnSouthernBoundary()
         {
             return YCoordinate != YMin;
