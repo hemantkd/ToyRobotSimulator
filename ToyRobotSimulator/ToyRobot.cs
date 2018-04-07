@@ -32,6 +32,11 @@
             }
         }
 
+        public void RotateLeft()
+        {
+            Facing = Facing == Direction.North ? Direction.West : Facing - 1;
+        }
+
         private bool IsNotOnSouthernBoundary()
         {
             return YCoordinate != YMin;
