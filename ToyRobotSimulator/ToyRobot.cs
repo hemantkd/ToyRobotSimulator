@@ -2,6 +2,8 @@
 {
     public class ToyRobot
     {
+        private const int XMin = 0, YMin = 0, XMax = 5, YMax = 5;
+
         public ToyRobot(int xCoordinate, int yCoordinate, Direction facing)
         {
             XCoordinate = xCoordinate;
@@ -19,15 +21,35 @@
         {
             switch (Facing)
             {
-                case Direction.East: XCoordinate++;
+                case Direction.East: if(IsNotOnEasternBoundary()) XCoordinate++;
                     break;
-                case Direction.West: XCoordinate--;
+                case Direction.West: if(IsNotOnWesternBoundary()) XCoordinate--;
                     break;
-                case Direction.North: YCoordinate++;
+                case Direction.North: if(IsNotOnNorthernBoundary()) YCoordinate++;
                     break;
-                case Direction.South: YCoordinate--;
+                case Direction.South: if(IsNotOnSouthernBoundary()) YCoordinate--;
                     break;
             }
+        }
+
+        private bool IsNotOnSouthernBoundary()
+        {
+            return YCoordinate != YMin;
+        }
+
+        private bool IsNotOnNorthernBoundary()
+        {
+            return YCoordinate != YMax;
+        }
+
+        private bool IsNotOnWesternBoundary()
+        {
+            return XCoordinate != XMin;
+        }
+
+        private bool IsNotOnEasternBoundary()
+        {
+            return XCoordinate != XMax;
         }
     }
 }

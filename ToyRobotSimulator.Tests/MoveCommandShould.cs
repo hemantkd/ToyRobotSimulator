@@ -5,21 +5,20 @@ namespace ToyRobotSimulator.Tests
     [TestFixture]
     public class MoveCommandShould
     {
-        const int CurrentX = 0;
-        const int CurrentY = 0;
+        private const int XMin = 0, YMin = 0, XMax = 5, YMax = 5;
 
         [Test]
         public void MoveToyRobotFacingNorth_OneUnitForwardInNorth()
         {
             var toyRobot = new ToyRobot(
-                xCoordinate: CurrentX,
-                yCoordinate: CurrentY,
+                xCoordinate: XMin,
+                yCoordinate: YMin,
                 facing: Direction.North
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(CurrentY + 1));
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(CurrentX));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin + 1));
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
             Assert.That(toyRobot.Facing, Is.EqualTo(Direction.North));
         }
 
@@ -27,14 +26,14 @@ namespace ToyRobotSimulator.Tests
         public void MoveToyRobotFacingSouth_OneUnitForwardInSouth()
         {
             var toyRobot = new ToyRobot(
-                xCoordinate: CurrentX,
-                yCoordinate: CurrentY,
+                xCoordinate: XMin,
+                yCoordinate: YMax,
                 facing: Direction.South
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(CurrentY - 1));
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(CurrentX));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMax - 1));
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
             Assert.That(toyRobot.Facing, Is.EqualTo(Direction.South));
         }
 
@@ -42,14 +41,14 @@ namespace ToyRobotSimulator.Tests
         public void MoveToyRobotFacingWest_OneUnitForwardInWest()
         {
             var toyRobot = new ToyRobot(
-                xCoordinate: CurrentX,
-                yCoordinate: CurrentY,
+                xCoordinate: XMax,
+                yCoordinate: YMin,
                 facing: Direction.West
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(CurrentX - 1));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(CurrentY));
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMax - 1));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
             Assert.That(toyRobot.Facing, Is.EqualTo(Direction.West));
         }
 
@@ -57,15 +56,75 @@ namespace ToyRobotSimulator.Tests
         public void MoveToyRobotFacingEast_OneUnitForwardInEast()
         {
             var toyRobot = new ToyRobot(
-                xCoordinate: CurrentX,
-                yCoordinate: CurrentY,
+                xCoordinate: XMin,
+                yCoordinate: YMin,
                 facing: Direction.East
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(CurrentX + 1));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(CurrentY));
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin + 1));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
             Assert.That(toyRobot.Facing, Is.EqualTo(Direction.East));
+        }
+
+        [Test]
+        public void NotMoveToyRobotFacingEast_IfNextStepIsOutOfBounds()
+        {
+            var toyRobot = new ToyRobot(
+                xCoordinate: XMax,
+                yCoordinate: YMin,
+                facing: Direction.East
+            );
+            toyRobot.Move();
+
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMax));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.East));
+        }
+
+        [Test]
+        public void NotMoveToyRobotFacingWest_IfNextStepIsOutOfBounds()
+        {
+            var toyRobot = new ToyRobot(
+                xCoordinate: XMin,
+                yCoordinate: YMin,
+                facing: Direction.West
+            );
+            toyRobot.Move();
+
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.West));
+        }
+
+        [Test]
+        public void NotMoveToyRobotFacingNorth_IfNextStepIsOutOfBounds()
+        {
+            var toyRobot = new ToyRobot(
+                xCoordinate: XMin,
+                yCoordinate: YMax,
+                facing: Direction.North
+            );
+            toyRobot.Move();
+
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMax));
+            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.North));
+        }
+
+        [Test]
+        public void NotMoveToyRobotFacingSouth_IfNextStepIsOutOfBounds()
+        {
+            var toyRobot = new ToyRobot(
+                xCoordinate: XMin,
+                yCoordinate: YMin,
+                facing: Direction.South
+            );
+            toyRobot.Move();
+
+            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.South));
         }
     }
 }
