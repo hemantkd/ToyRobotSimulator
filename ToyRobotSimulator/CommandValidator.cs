@@ -29,7 +29,16 @@ namespace ToyRobotSimulator
             return PlaceCommandHasCorrectNumberOfParameters(commandParameters) &&
                 AllParametersHaveValue(commandParameters) &&
                 XParameterIsValid(commandParameters[0]) &&
-                YParameterIsValid(commandParameters[1]);
+                YParameterIsValid(commandParameters[1]) &&
+                DirectionIsValid(commandParameters[2]);
+        }
+
+        private bool DirectionIsValid(string directionParameter)
+        {
+            return directionParameter.Equals(nameof(Direction.North), StringComparison.OrdinalIgnoreCase) ||
+                   directionParameter.Equals(nameof(Direction.South), StringComparison.OrdinalIgnoreCase) ||
+                   directionParameter.Equals(nameof(Direction.West), StringComparison.OrdinalIgnoreCase) ||
+                   directionParameter.Equals(nameof(Direction.East), StringComparison.OrdinalIgnoreCase);
         }
 
         private bool XParameterIsValid(string xParameter)

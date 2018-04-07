@@ -77,5 +77,25 @@ namespace ToyRobotSimulator.Tests
 
             Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
+
+        [TestCase("Place 0,1,NORTH")]
+        [TestCase("Place 0,1,SOUTH")]
+        [TestCase("Place 0,1,West")]
+        [TestCase("Place 0,1,east")]
+        public void ShouldReturnTrue_IfPlaceCommandHas_ValidDirection(string placeCommand)
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsTrue(commandValidator.IsValid(placeCommand));
+        }
+
+        [TestCase("Place 0,1,Up")]
+        [TestCase("Place 0,1,Down")]
+        public void ShouldReturnFalse_IfPlaceCommandHas_InvalidDirection(string placeCommand)
+        {
+            var commandValidator = new CommandValidator();
+
+            Assert.IsFalse(commandValidator.IsValid(placeCommand));
+        }
     }
 }
