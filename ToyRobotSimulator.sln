@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator", "ToyRobotSimulator\ToyRobotSimulator.csproj", "{2D5AAF72-9742-430F-80F8-06FA0E10A0C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator", "ToyRobotSimulator\ToyRobotSimulator.csproj", "{2D5AAF72-9742-430F-80F8-06FA0E10A0C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.Tests", "ToyRobotSimulator.Tests\ToyRobotSimulator.Tests.csproj", "{64EA2F83-529D-4945-B598-B53F3D9CF099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.Tests", "ToyRobotSimulator.Tests\ToyRobotSimulator.Tests.csproj", "{64EA2F83-529D-4945-B598-B53F3D9CF099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.ConsoleUI", "ToyRobotSimulator.ConsoleUI\ToyRobotSimulator.ConsoleUI.csproj", "{C860FF99-AA6B-4ABA-92B2-C42033CB282E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{64EA2F83-529D-4945-B598-B53F3D9CF099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64EA2F83-529D-4945-B598-B53F3D9CF099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64EA2F83-529D-4945-B598-B53F3D9CF099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C860FF99-AA6B-4ABA-92B2-C42033CB282E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C860FF99-AA6B-4ABA-92B2-C42033CB282E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C860FF99-AA6B-4ABA-92B2-C42033CB282E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C860FF99-AA6B-4ABA-92B2-C42033CB282E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

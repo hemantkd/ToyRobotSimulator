@@ -34,12 +34,12 @@
 
         public void RotateLeft()
         {
-            Facing = Facing == Direction.North ? Direction.West : Facing - 1;
+            Facing = Facing.RotateLeft();
         }
 
         public void RotateRight()
         {
-            Facing = Facing == Direction.West ? Direction.North : Facing + 1;
+            Facing = Facing.RotateRight();
         }
 
         private bool IsNotOnSouthernBoundary()
@@ -60,6 +60,11 @@
         private bool IsNotOnEasternBoundary()
         {
             return XCoordinate != XMax;
+        }
+
+        public string Report()
+        {
+            return $"Output: {XCoordinate},{YCoordinate},{Facing.ToString().ToUpperInvariant()}";
         }
     }
 }

@@ -10,11 +10,11 @@ namespace ToyRobotSimulator
 
         public bool IsValid(string command)
         {
-            return command.Equals("Move", StringComparison.OrdinalIgnoreCase) ||
-                   command.Equals("left", StringComparison.OrdinalIgnoreCase) ||
-                   command.Equals("Right", StringComparison.OrdinalIgnoreCase) ||
-                   command.Equals("RepOrt", StringComparison.OrdinalIgnoreCase) ||
-                   (command.StartsWith("place ", StringComparison.OrdinalIgnoreCase)
+            return command.Equals(nameof(Command.Move), StringComparison.OrdinalIgnoreCase) ||
+                   command.Equals(nameof(Command.Left), StringComparison.OrdinalIgnoreCase) ||
+                   command.Equals(nameof(Command.Right), StringComparison.OrdinalIgnoreCase) ||
+                   command.Equals(nameof(Command.Report), StringComparison.OrdinalIgnoreCase) ||
+                   (command.StartsWith(nameof(Command.Place), StringComparison.OrdinalIgnoreCase)
                     && PlaceCommandIsValid(command));
         }
 
@@ -41,7 +41,7 @@ namespace ToyRobotSimulator
                    directionParameter.Equals(nameof(Direction.East), StringComparison.OrdinalIgnoreCase);
         }
 
-        private bool XParameterIsValid(string xParameter)
+        public bool XParameterIsValid(string xParameter)
         {
             if (IsNotAnInteger(xParameter)) return IsNotValid;
 
@@ -50,7 +50,7 @@ namespace ToyRobotSimulator
             return IsInTheRange(x);
         }
 
-        private bool YParameterIsValid(string yParameter)
+        public bool YParameterIsValid(string yParameter)
         {
             if(IsNotAnInteger(yParameter)) return IsNotValid;
             
