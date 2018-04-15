@@ -1,10 +1,12 @@
-﻿namespace ToyRobotSimulator.ConsoleUI
+﻿using ToyRobotSimulator.AppServices;
+
+namespace ToyRobotSimulator.ConsoleUI
 {
     class Program
     {
         static void Main()
         {
-            var commandControl = new CommandControl(new CommandValidator());
+            var commandControl = new CommandControl(new CommandExecutor(new CommandValidator()));
             commandControl.Start();
         }
     }

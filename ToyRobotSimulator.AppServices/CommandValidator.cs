@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using ToyRobotSimulator.AppInterfaces;
 
-namespace ToyRobotSimulator
+namespace ToyRobotSimulator.AppServices
 {
-    public class CommandValidator
+    public class CommandValidator : ICommandValidator
     {
         private const bool IsNotValid = false;
 
