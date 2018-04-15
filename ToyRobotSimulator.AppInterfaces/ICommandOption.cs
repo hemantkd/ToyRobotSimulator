@@ -1,7 +1,8 @@
 ﻿namespace ToyRobotSimulator.AppInterfaces
 {
-    public interface ICommandExecutor
+    public interface ICommandOption
     {
+        bool IsMatch(Command command);
         void Execute(Command command, ToyRobot toyRobot);
     }
 }
