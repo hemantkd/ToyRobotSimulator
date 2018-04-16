@@ -1,15 +1,16 @@
-﻿using System;
-using ToyRobotSimulator.AppInterfaces;
+﻿using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     internal class ReportCommand : ICommandOption
     {
         private readonly ICommandValidator _commandValidator;
+        private readonly IUserInteractionService _userInteractionService;
 
-        public ReportCommand(ICommandValidator commandValidator)
+        public ReportCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandValidator = commandValidator;
+            _userInteractionService = userInteractionService;
         }
 
         public bool IsMatch(Command command)
@@ -19,22 +20,19 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            if (ClearScreenIfToyRobotIsAbsent(toyRobot)) return;
-            if (_commandValidator.IsValid(nameof(Command.Report).ToUpperInvariant()))
-                PrintText($"\n\n{toyRobot.Report()}\n");
+            if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
+
+            if (_commandValidator.IsValid(BuildReportCommandText()))
+            {
+                string reportText = toyRobot.Report(); // Perform related action on the Toy Robot
+
+                _userInteractionService.PrintText($"\n\n{reportText}\n");
+            }
         }
 
-        private void PrintText(string text)
+        private string BuildReportCommandText()
         {
-            Console.Write(text);
-        }
-
-        private bool ClearScreenIfToyRobotIsAbsent(ToyRobot toyRobot)
-        {
-            if (toyRobot != null) return false;
-
-            Console.Clear();
-            return true;
+            return nameof(Command.Report).ToUpperInvariant();
         }
     }
 }

@@ -8,17 +8,17 @@ namespace ToyRobotSimulator.AppServices
     {
         private readonly List<ICommandOption> _commandOptions;
 
-        public CommandExecutor(ICommandValidator commandValidator)
+        public CommandExecutor(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandOptions = new List<ICommandOption>
             {
-                new PlaceCommand(commandValidator),
-                new LeftCommand(commandValidator),
-                new MoveCommand(commandValidator),
-                new RightCommand(commandValidator),
-                new ReportCommand(commandValidator),
+                new PlaceCommand(commandValidator, userInteractionService),
+                new LeftCommand(commandValidator, userInteractionService),
+                new MoveCommand(commandValidator, userInteractionService),
+                new RightCommand(commandValidator, userInteractionService),
+                new ReportCommand(commandValidator, userInteractionService),
                 new QuitCommand(),
-                new UnknownCommand()
+                new UnknownCommand(userInteractionService)
             };
         }
 

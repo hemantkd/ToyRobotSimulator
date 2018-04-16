@@ -1,15 +1,16 @@
-﻿using System;
-using ToyRobotSimulator.AppInterfaces;
+﻿using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class MoveCommand : ICommandOption
     {
         private readonly ICommandValidator _commandValidator;
+        private readonly IUserInteractionService _userInteractionService;
 
-        public MoveCommand(ICommandValidator commandValidator)
+        public MoveCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandValidator = commandValidator;
+            _userInteractionService = userInteractionService;
         }
 
         public bool IsMatch(Command command)
@@ -19,26 +20,19 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            if (ClearScreenIfToyRobotIsAbsent(toyRobot)) return;
-            if (_commandValidator.IsValid(nameof(Command.Move).ToUpperInvariant()))
+            if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
+
+            if (_commandValidator.IsValid(BuildMoveCommandText()))
             {
-                toyRobot.Move();
-                PrintText($"\n{nameof(Command.Move).ToUpperInvariant()} Command Executed!\n");
+                toyRobot.Move(); // Perform related action on the Toy Robot
+
+                _userInteractionService.PrintText($"\n{BuildMoveCommandText()} Command Executed!\n");
             }
-
         }
 
-        private void PrintText(string text)
+        private string BuildMoveCommandText()
         {
-            Console.Write(text);
-        }
-
-        private bool ClearScreenIfToyRobotIsAbsent(ToyRobot toyRobot)
-        {
-            if (toyRobot != null) return false;
-
-            Console.Clear();
-            return true;
+            return nameof(Command.Move).ToUpperInvariant();
         }
     }
 }

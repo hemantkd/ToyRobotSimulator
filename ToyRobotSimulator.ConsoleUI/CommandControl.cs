@@ -27,11 +27,9 @@ namespace ToyRobotSimulator.ConsoleUI
 
         private Command RequestCommandFromUser()
         {
-            var commandSelection = _userInteractionService.GetCommandSelection();
-
             try
             {
-                return (Command) Convert.ToInt32(commandSelection);
+                return _userInteractionService.GetCommand();
             }
             catch (Exception)
             {

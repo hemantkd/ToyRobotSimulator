@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using ToyRobotSimulator.AppInterfaces;
+﻿using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class PlaceCommand : ICommandOption
     {
         private readonly ICommandValidator _commandValidator;
-        private int _x;
-        private int _y;
-        private Direction _f;
+        private readonly IUserInteractionService _userInteractionService;
 
-        public PlaceCommand(ICommandValidator commandValidator)
+        public PlaceCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandValidator = commandValidator;
+            _userInteractionService = userInteractionService;
         }
 
         public bool IsMatch(Command command)
@@ -26,104 +20,27 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            RequestXCoordinate();
-            RequestYCoordinate();
-            RequestDirectionFacing();
+            int x = _userInteractionService.RequestXCoordinate();
+            int y = _userInteractionService.RequestYCoordinate();
+            Direction f = _userInteractionService.RequestDirectionFacing();
 
-            var placeCommand = $"{nameof(Command.Place).ToUpperInvariant()} {_x},{_y},{_f.ToString().ToUpperInvariant()}";
+            var placeCommand = BuildPlaceCommandTextWithParameters(x, y, f);
 
-            if (_commandValidator.IsValid(placeCommand))
-            {
-                toyRobot.SetPosition(_x, _y, _f);
-                PrintText($"\n{nameof(Command.Place).ToUpperInvariant()} Command Executed!\n");
-            }
+            if (!_commandValidator.IsValid(placeCommand)) return;
+
+            toyRobot.SetPosition(x, y, f); // Perform related action on the Toy Robot
+
+            _userInteractionService.PrintText($"\n{BuildPlaceCommandText()} Command Executed!\n");
         }
 
-        private void RequestDirectionFacing()
+        private string BuildPlaceCommandTextWithParameters(int x, int y, Direction f)
         {
-            var stringBuilder = new StringBuilder()
-                .AppendLine("\n-----------------------")
-                .AppendLine("Select The Direction Facing")
-                .AppendLine("-----------------------");
-
-            List<Direction> directions = Enum.GetValues(typeof(Direction)).Cast<Direction>().ToList();
-
-            directions.ForEach(direction =>
-                stringBuilder.AppendLine($"[{direction:D}] {direction}".ToUpperInvariant()));
-
-            stringBuilder.AppendLine("-----------------------")
-                .Append("=> ");
-
-            PrintText(stringBuilder.ToString());
-
-            while (true)
-            {
-                try
-                {
-                    _f = directions[Convert.ToInt32(GetKeyFromUser()) - 1];
-                    break;
-                }
-                catch (Exception)
-                {
-                    PrintText("\nInvalid selection. Please try again... => ");
-                }
-            }
+            return $"{BuildPlaceCommandText()} {x},{y},{f.ToString().ToUpperInvariant()}";
         }
 
-        private void RequestYCoordinate()
+        private string BuildPlaceCommandText()
         {
-            while (true)
-            {
-                PrintText("\nEnter the parameter Y for the PLACE command [0-5] => ");
-
-                if (!YCoordinateIsValid())
-                {
-                    PrintText("\nInvalid value entered for Y. Please try again...\n");
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-
-        private void RequestXCoordinate()
-        {
-            while (true)
-            {
-                PrintText($"\nEnter the parameter X for the PLACE command [0-5] => ");
-
-                if (!XCoordinateIsValid())
-                {
-                    PrintText("\nInvalid value entered for X. Please try again...\n");
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-
-        private bool XCoordinateIsValid()
-        {
-            return int.TryParse(GetKeyFromUser(), NumberStyles.Integer, CultureInfo.InvariantCulture, out _x)
-                   && _commandValidator.XParameterIsValid(_x.ToString());
-        }
-
-        private bool YCoordinateIsValid()
-        {
-            return int.TryParse(GetKeyFromUser(), NumberStyles.Integer, CultureInfo.InvariantCulture, out _y)
-                   && _commandValidator.YParameterIsValid(_y.ToString());
-        }
-
-        private string GetKeyFromUser()
-        {
-            return Console.ReadKey().KeyChar.ToString();
-        }
-
-        private void PrintText(string text)
-        {
-            Console.Write(text);
+            return nameof(Command.Place).ToUpperInvariant();
         }
     }
 }

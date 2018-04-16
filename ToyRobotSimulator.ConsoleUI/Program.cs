@@ -6,7 +6,16 @@ namespace ToyRobotSimulator.ConsoleUI
     {
         static void Main()
         {
-            var commandControl = new CommandControl(new CommandExecutor(new CommandValidator()), new UserInteractionService(), new ToyRobot());
+            // TODO: Use an IoC Framework to resolve the dependencies
+            var commandControl = new CommandControl(
+                commandExecutor: new CommandExecutor(
+                    commandValidator: new CommandValidator(),
+                    userInteractionService: new UserInteractionService(new CommandValidator())
+                ),
+                userInteractionService: new UserInteractionService(new CommandValidator()),
+                toyRobot: new ToyRobot()
+            );
+            
             commandControl.Start();
         }
     }
