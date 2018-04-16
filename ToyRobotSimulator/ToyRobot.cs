@@ -6,10 +6,13 @@
 
         public ToyRobot(int xCoordinate, int yCoordinate, Direction facing)
         {
-            XCoordinate = xCoordinate;
-            YCoordinate = yCoordinate;
-            Facing = facing;
+            SetPosition(xCoordinate, yCoordinate, facing);
         }
+
+        public ToyRobot()
+        {}
+
+        public bool Deactivate { get; set; } = false;
 
         public Direction Facing { get; private set; }
 
@@ -17,6 +20,12 @@
 
         public int XCoordinate { get; private set; }
 
+        public void SetPosition(int xCoordinate, int yCoordinate, Direction facing)
+        {
+            XCoordinate = xCoordinate;
+            YCoordinate = yCoordinate;
+            Facing = facing;
+        }
         public void Move()
         {
             switch (Facing)

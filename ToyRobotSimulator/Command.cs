@@ -7,6 +7,7 @@
         Left,
         Right,
         Report,
-        Quit
+        Quit,
+        Unknown
     }
 }
