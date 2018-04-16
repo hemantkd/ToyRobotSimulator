@@ -6,7 +6,7 @@ namespace ToyRobotSimulator.ConsoleUI
     {
         static void Main()
         {
-            var commandControl = new CommandControl(new CommandExecutor(new CommandValidator()), new ToyRobot());
+            var commandControl = new CommandControl(new CommandExecutor(new CommandValidator()), new UserInteractionService(), new ToyRobot());
             commandControl.Start();
         }
     }

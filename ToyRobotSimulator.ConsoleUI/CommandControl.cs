@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.ConsoleUI
@@ -8,11 +6,13 @@ namespace ToyRobotSimulator.ConsoleUI
     public class CommandControl
     {
         private readonly ICommandExecutor _commandExecutor;
+        private readonly IUserInteractionService _userInteractionService;
         private readonly ToyRobot _toyRobot;
 
-        public CommandControl(ICommandExecutor commandExecutor, ToyRobot toyRobot)
+        public CommandControl(ICommandExecutor commandExecutor, IUserInteractionService userInteractionService, ToyRobot toyRobot)
         {
             _commandExecutor = commandExecutor;
+            _userInteractionService = userInteractionService;
             _toyRobot = toyRobot;
         }
 
@@ -27,40 +27,16 @@ namespace ToyRobotSimulator.ConsoleUI
 
         private Command RequestCommandFromUser()
         {
-            var stringBuilder = new StringBuilder()
-                .AppendLine("\nSelect Your Command")
-                .AppendLine("-----------------------");
-
-            var commands = Enum.GetValues(typeof(Command)).Cast<Command>().ToList();
-            commands.Remove(Command.Unknown);
-
-            commands.ForEach(command => stringBuilder.AppendLine($"[{command:D}] {command}"));
-
-            stringBuilder.AppendLine("-----------------------")
-                .Append("=> ");
-
-            PrintText(stringBuilder.ToString());
-
-            var menuSelection = GetKeyFromUser();
+            var commandSelection = _userInteractionService.GetCommandSelection();
 
             try
             {
-                return (Command) Convert.ToInt32(menuSelection);
+                return (Command) Convert.ToInt32(commandSelection);
             }
             catch (Exception)
             {
                 return Command.Unknown;
-            };
-        }
-
-        private string GetKeyFromUser()
-        {
-            return Console.ReadKey().KeyChar.ToString();
-        }
-
-        private void PrintText(string text)
-        {
-            Console.Write(text);
+            }
         }
     }
 }
