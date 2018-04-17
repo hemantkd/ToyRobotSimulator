@@ -1,10 +1,16 @@
-﻿using System;
-using ToyRobotSimulator.AppInterfaces;
+﻿using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class UnknownCommand : ICommandOption
     {
+        private readonly IUserInteractionService _userInteractionService;
+
+        public UnknownCommand(IUserInteractionService userInteractionService)
+        {
+            _userInteractionService = userInteractionService;
+        }
+
         public bool IsMatch(Command command)
         {
             return command == Command.Unknown;
@@ -12,12 +18,7 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            PrintText("\nInvalid command selected. Please try again...\n");
-        }
-
-        private void PrintText(string text)
-        {
-            Console.Write(text);
+            _userInteractionService.PrintText("\nInvalid command selected. Please try again...\n");
         }
     }
 }

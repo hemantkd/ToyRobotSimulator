@@ -1,15 +1,16 @@
-﻿using System;
-using ToyRobotSimulator.AppInterfaces;
+﻿using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
-    internal class LeftCommand : ICommandOption
+    public class LeftCommand : ICommandOption
     {
         private readonly ICommandValidator _commandValidator;
+        private readonly IUserInteractionService _userInteractionService;
 
-        public LeftCommand(ICommandValidator commandValidator)
+        public LeftCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandValidator = commandValidator;
+            _userInteractionService = userInteractionService;
         }
 
         public bool IsMatch(Command command)
@@ -19,25 +20,19 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            if (ClearScreenIfToyRobotIsAbsent(toyRobot)) return;
-            if (_commandValidator.IsValid(nameof(Command.Left).ToUpperInvariant()))
+            if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
+
+            if (_commandValidator.IsValid(BuildLeftCommandText()))
             {
-                toyRobot.RotateLeft();
-                PrintText($"\n{nameof(Command.Left).ToUpperInvariant()} Command Executed!\n");
+                toyRobot.RotateLeft(); // Perform related action on the Toy Robot
+
+                _userInteractionService.PrintText($"\n{BuildLeftCommandText()} Command Executed!\n");
             }
         }
 
-        private void PrintText(string text)
+        private string BuildLeftCommandText()
         {
-            Console.Write(text);
-        }
-
-        private bool ClearScreenIfToyRobotIsAbsent(ToyRobot toyRobot)
-        {
-            if (toyRobot != null) return false;
-
-            Console.Clear();
-            return true;
+            return nameof(Command.Left).ToUpperInvariant();
         }
     }
 }
