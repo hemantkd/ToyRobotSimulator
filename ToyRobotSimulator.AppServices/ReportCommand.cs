@@ -4,12 +4,12 @@ namespace ToyRobotSimulator.AppServices
 {
     internal class ReportCommand : ICommandOption
     {
-        private readonly ICommandValidator _commandValidator;
+        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
-        public ReportCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
+        public ReportCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
         {
-            _commandValidator = commandValidator;
+            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
@@ -22,7 +22,7 @@ namespace ToyRobotSimulator.AppServices
         {
             if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
 
-            if (_commandValidator.IsValid(BuildReportCommandText()))
+            if (_commandTextValidator.IsValid(BuildReportCommandText()))
             {
                 string reportText = toyRobot.Report(); // Perform related action on the Toy Robot
 

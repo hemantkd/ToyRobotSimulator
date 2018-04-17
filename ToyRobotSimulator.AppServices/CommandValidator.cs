@@ -5,7 +5,7 @@ using ToyRobotSimulator.AppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
-    public class CommandValidator : ICommandValidator
+    public class CommandTextValidator : ICommandTextValidator
     {
         private const bool IsNotValid = false;
 

@@ -4,12 +4,12 @@ namespace ToyRobotSimulator.AppServices
 {
     public class MoveCommand : ICommandOption
     {
-        private readonly ICommandValidator _commandValidator;
+        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
-        public MoveCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
+        public MoveCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
         {
-            _commandValidator = commandValidator;
+            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
@@ -22,7 +22,7 @@ namespace ToyRobotSimulator.AppServices
         {
             if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
 
-            if (_commandValidator.IsValid(BuildMoveCommandText()))
+            if (_commandTextValidator.IsValid(BuildMoveCommandText()))
             {
                 toyRobot.Move(); // Perform related action on the Toy Robot
 

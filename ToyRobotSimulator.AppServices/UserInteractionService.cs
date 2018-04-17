@@ -9,14 +9,14 @@ namespace ToyRobotSimulator.AppServices
 {
     public class UserInteractionService : IUserInteractionService
     {
-        private readonly ICommandValidator _commandValidator;
+        private readonly ICommandTextValidator _commandTextValidator;
         
         private int _x;
         private int _y;
 
-        public UserInteractionService(ICommandValidator commandValidator)
+        public UserInteractionService(ICommandTextValidator commandTextValidator)
         {
-            _commandValidator = commandValidator;
+            _commandTextValidator = commandTextValidator;
         }
 
         public Command GetCommand()
@@ -137,13 +137,13 @@ namespace ToyRobotSimulator.AppServices
         private bool XCoordinateIsValid()
         {
             return int.TryParse(GetKeyFromUser(), NumberStyles.Integer, CultureInfo.InvariantCulture, out _x)
-                   && _commandValidator.XParameterIsValid(_x.ToString());
+                   && _commandTextValidator.XParameterIsValid(_x.ToString());
         }
 
         private bool YCoordinateIsValid()
         {
             return int.TryParse(GetKeyFromUser(), NumberStyles.Integer, CultureInfo.InvariantCulture, out _y)
-                   && _commandValidator.YParameterIsValid(_y.ToString());
+                   && _commandTextValidator.YParameterIsValid(_y.ToString());
         }
     }
 }

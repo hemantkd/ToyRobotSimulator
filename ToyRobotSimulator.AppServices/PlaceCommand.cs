@@ -4,12 +4,12 @@ namespace ToyRobotSimulator.AppServices
 {
     public class PlaceCommand : ICommandOption
     {
-        private readonly ICommandValidator _commandValidator;
+        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
-        public PlaceCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
+        public PlaceCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
         {
-            _commandValidator = commandValidator;
+            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
@@ -26,7 +26,7 @@ namespace ToyRobotSimulator.AppServices
 
             var placeCommand = BuildPlaceCommandTextWithParameters(x, y, f);
 
-            if (!_commandValidator.IsValid(placeCommand)) return;
+            if (!_commandTextValidator.IsValid(placeCommand)) return;
 
             toyRobot.SetPosition(x, y, f); // Perform related action on the Toy Robot
 

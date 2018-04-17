@@ -1,6 +1,6 @@
 ﻿namespace ToyRobotSimulator.AppInterfaces
 {
-    public interface ICommandValidator
+    public interface ICommandTextValidator
     {
         bool IsValid(string command);
         bool XParameterIsValid(string xParameter);

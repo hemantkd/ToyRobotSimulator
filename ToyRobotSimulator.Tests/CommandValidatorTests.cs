@@ -9,7 +9,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForMoveCommand()
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsTrue(commandValidator.IsValid("MOVE"));
         }
@@ -17,7 +17,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForLeftCommand()
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsTrue(commandValidator.IsValid("LEFT"));
         }
@@ -25,7 +25,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForRightCommand()
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsTrue(commandValidator.IsValid("RIGHT"));
         }
@@ -33,7 +33,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForReportCommand()
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsTrue(commandValidator.IsValid("REPORT"));
         }
@@ -41,7 +41,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForPlaceCommand()
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsTrue(commandValidator.IsValid("PLACE 0,0,NORTH"));
         }
@@ -54,7 +54,7 @@ namespace ToyRobotSimulator.Tests
         [TestCase("PLACE ,0,NORTH")]
         public void ShouldReturnFalse_IfPlaceCommandHas_ElementsMissing(string placeCommand)
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
@@ -63,7 +63,7 @@ namespace ToyRobotSimulator.Tests
         [TestCase("PLACE 0,EAST,0")]
         public void ShouldReturnFalse_IfPlaceCommandHas_ANonIntegerXOrYParameter(string placeCommand)
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
@@ -74,7 +74,7 @@ namespace ToyRobotSimulator.Tests
         [TestCase("PLACE 3,6,SOUTH")]
         public void ShouldReturnFalse_IfPlaceCommandHas_OutOfRangeXOrYParameter(string placeCommand)
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
@@ -85,7 +85,7 @@ namespace ToyRobotSimulator.Tests
         [TestCase("Place 0,1,east")]
         public void ShouldReturnTrue_IfPlaceCommandHas_ValidDirection(string placeCommand)
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsTrue(commandValidator.IsValid(placeCommand));
         }
@@ -94,7 +94,7 @@ namespace ToyRobotSimulator.Tests
         [TestCase("Place 0,1,Down")]
         public void ShouldReturnFalse_IfPlaceCommandHas_InvalidDirection(string placeCommand)
         {
-            var commandValidator = new CommandValidator();
+            var commandValidator = new CommandTextValidator();
 
             Assert.IsFalse(commandValidator.IsValid(placeCommand));
         }
