@@ -4,6 +4,13 @@ namespace ToyRobotSimulator.AppServices
 {
     public class QuitCommand : ICommandOption
     {
+        private readonly IUserInteractionService _userInteractionService;
+
+        public QuitCommand(IUserInteractionService userInteractionService)
+        {
+            _userInteractionService = userInteractionService;
+        }
+
         public bool IsMatch(Command command)
         {
             return command == Command.Quit;
@@ -12,6 +19,7 @@ namespace ToyRobotSimulator.AppServices
         public void Execute(Command command, ToyRobot toyRobot)
         {
             toyRobot.Deactivate = true;
+            _userInteractionService.PrintText("\n");
         }
     }
 }

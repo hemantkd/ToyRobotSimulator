@@ -7,6 +7,8 @@ namespace ToyRobotSimulator.AppServices
         private readonly ICommandValidator _commandValidator;
         private readonly IUserInteractionService _userInteractionService;
 
+        public string CommandName => nameof(Command.Report);
+
         public RightCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandValidator = commandValidator;
@@ -22,17 +24,13 @@ namespace ToyRobotSimulator.AppServices
         {
             if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
 
-            if (_commandValidator.IsValid(BuildRightCommandText()))
-            {
-                toyRobot.RotateRight(); // Perform related action on the Toy Robot
+            var rightCommandText = CommandName;
 
-                _userInteractionService.PrintText($"\n{BuildRightCommandText()} Command Executed!\n");
-            }
-        }
+            if (!_commandValidator.IsValid(rightCommandText)) return;
 
-        private string BuildRightCommandText()
-        {
-            return nameof(Command.Right).ToUpperInvariant();
+            toyRobot.RotateRight(); // Perform related action on the Toy Robot
+
+            _userInteractionService.PrintCommandExecuted(CommandName);
         }
     }
 }

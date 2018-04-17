@@ -7,6 +7,8 @@ namespace ToyRobotSimulator.AppServices
         private readonly ICommandValidator _commandValidator;
         private readonly IUserInteractionService _userInteractionService;
 
+        public string CommandName => nameof(Command.Place);
+
         public PlaceCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
         {
             _commandValidator = commandValidator;
@@ -24,23 +26,18 @@ namespace ToyRobotSimulator.AppServices
             int y = _userInteractionService.RequestYCoordinate();
             Direction f = _userInteractionService.RequestDirectionFacing();
 
-            var placeCommand = BuildPlaceCommandTextWithParameters(x, y, f);
+            var placeCommandText = BuildPlaceCommandTextWithParameters(x, y, f);
 
-            if (!_commandValidator.IsValid(placeCommand)) return;
+            if (!_commandValidator.IsValid(placeCommandText)) return;
 
             toyRobot.SetPosition(x, y, f); // Perform related action on the Toy Robot
 
-            _userInteractionService.PrintText($"\n{BuildPlaceCommandText()} Command Executed!\n");
+            _userInteractionService.PrintCommandExecuted(CommandName);
         }
 
         private string BuildPlaceCommandTextWithParameters(int x, int y, Direction f)
         {
-            return $"{BuildPlaceCommandText()} {x},{y},{f.ToString().ToUpperInvariant()}";
-        }
-
-        private string BuildPlaceCommandText()
-        {
-            return nameof(Command.Place).ToUpperInvariant();
+            return $"{CommandName} {x},{y},{f.ToString().ToUpperInvariant()}";
         }
     }
 }

@@ -28,16 +28,16 @@ namespace ToyRobotSimulator.AppServices
             var commands = Enum.GetValues(typeof(Command)).Cast<Command>().ToList();
             commands.Remove(Command.Unknown);
 
-            commands.ForEach(command => stringBuilder.AppendLine($"[{command:D}] {command}"));
+            commands.ForEach(command => stringBuilder.AppendLine(GetMenuOptionFormat(command)));
 
             stringBuilder.AppendLine("-----------------------")
                 .Append("=> ");
 
             PrintText(stringBuilder.ToString());
 
-            var commandKey = Convert.ToInt32(GetKeyFromUser());
+            var commandKey = int.Parse(GetKeyFromUser());
 
-            return commands[commandKey - 1];
+            return MapKeyToEnumValue(commandKey, commands);
         }
 
         public Direction RequestDirectionFacing()
@@ -47,10 +47,9 @@ namespace ToyRobotSimulator.AppServices
                 .AppendLine("Select The Direction Facing")
                 .AppendLine("-----------------------");
 
-            List<Direction> directions = Enum.GetValues(typeof(Direction)).Cast<Direction>().ToList();
+            var directions = Enum.GetValues(typeof(Direction)).Cast<Direction>().ToList();
 
-            directions.ForEach(direction =>
-                stringBuilder.AppendLine($"[{direction:D}] {direction}".ToUpperInvariant()));
+            directions.ForEach(direction => stringBuilder.AppendLine(GetMenuOptionFormat(direction)));
 
             stringBuilder.AppendLine("-----------------------")
                 .Append("=> ");
@@ -63,23 +62,13 @@ namespace ToyRobotSimulator.AppServices
                 {
                     int directionKey = GetDirectionKeyFromUser();
 
-                    return MapKeyToDirection(directionKey, directions);
+                    return MapKeyToEnumValue(directionKey, directions);
                 }
                 catch (Exception)
                 {
-                    PrintText("\nInvalid selection. Please try again... => ");
+                    PrintInvalidSelection();
                 }
             }
-        }
-
-        private Direction MapKeyToDirection(int directionKey, IReadOnlyList<Direction> directions)
-        {
-            return directions[directionKey - 1];
-        }
-
-        private int GetDirectionKeyFromUser()
-        {
-            return Convert.ToInt32(GetKeyFromUser());
         }
 
         public int RequestYCoordinate()
@@ -132,6 +121,41 @@ namespace ToyRobotSimulator.AppServices
 
             Console.Clear();
             return true;
+        }
+
+        public void PrintInvalidSelection()
+        {
+            PrintText("\nInvalid selection. Please try again... => ");
+        }
+
+        public void PrintCommandExecuted(string commandName)
+        {
+            PrintText($"\n{commandName.ToUpperInvariant()} Command Executed!\n");
+        }
+
+        private string GetMenuOptionFormat<T>(T enumValue)
+        {
+            return $"[{enumValue:D}] {enumValue}".ToUpperInvariant();
+        }
+
+        private T MapKeyToEnumValue<T>(int enumKey, IReadOnlyList<T> enumList)
+        {
+            return enumList[index: enumKey - 1];
+        }
+
+        //private Command MapKeyToCommand(int commandKey, IReadOnlyList<Command> commands)
+        //{
+        //    return commands[index: commandKey - 1];
+        //}
+
+        //private Direction MapKeyToDirection(int directionKey, IReadOnlyList<Direction> directions)
+        //{
+        //    return directions[index: directionKey - 1];
+        //}
+
+        private int GetDirectionKeyFromUser()
+        {
+            return int.Parse(GetKeyFromUser());
         }
 
         private bool XCoordinateIsValid()

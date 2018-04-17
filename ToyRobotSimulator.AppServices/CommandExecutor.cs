@@ -17,7 +17,7 @@ namespace ToyRobotSimulator.AppServices
                 new MoveCommand(commandValidator, userInteractionService),
                 new RightCommand(commandValidator, userInteractionService),
                 new ReportCommand(commandValidator, userInteractionService),
-                new QuitCommand(),
+                new QuitCommand(userInteractionService),
                 new UnknownCommand(userInteractionService)
             };
         }
