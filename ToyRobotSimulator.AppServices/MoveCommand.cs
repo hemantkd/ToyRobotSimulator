@@ -7,6 +7,8 @@ namespace ToyRobotSimulator.AppServices
         private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
+        public string CommandName => nameof(Command.Move);
+
         public MoveCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
         {
             _commandTextValidator = commandTextValidator;
@@ -22,17 +24,13 @@ namespace ToyRobotSimulator.AppServices
         {
             if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
 
-            if (_commandTextValidator.IsValid(BuildMoveCommandText()))
-            {
-                toyRobot.Move(); // Perform related action on the Toy Robot
+            var moveCommandText = CommandName;
 
-                _userInteractionService.PrintText($"\n{BuildMoveCommandText()} Command Executed!\n");
-            }
-        }
+            if (!_commandTextValidator.IsValid(moveCommandText)) return;
 
-        private string BuildMoveCommandText()
-        {
-            return nameof(Command.Move).ToUpperInvariant();
+            toyRobot.Move(); // Perform related action on the Toy Robot
+
+            _userInteractionService.PrintCommandExecuted(CommandName);
         }
     }
 }

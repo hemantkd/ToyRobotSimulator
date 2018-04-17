@@ -18,7 +18,7 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            _userInteractionService.PrintText("\nInvalid command selected. Please try again...\n");
+            _userInteractionService.PrintInvalidSelection();
         }
     }
 }
