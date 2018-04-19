@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.AppInterf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.AppServices", "ToyRobotSimulator.AppServices\ToyRobotSimulator.AppServices.csproj", "{0C8E330D-93A5-4481-9A04-D881830ACEF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.ConsoleTextUI", "ToyRobotSimulator.ConsoleTextUI\ToyRobotSimulator.ConsoleTextUI.csproj", "{791F828A-C6F2-46CE-A82F-63240D560A6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.ConsoleTextUI", "ToyRobotSimulator.ConsoleTextUI\ToyRobotSimulator.ConsoleTextUI.csproj", "{791F828A-C6F2-46CE-A82F-63240D560A6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.TextAppServices", "ToyRobotSimulator.TextAppServices\ToyRobotSimulator.TextAppServices.csproj", "{5BD05722-7289-4CAA-894D-D5F112CC4EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.TextAppServices", "ToyRobotSimulator.TextAppServices\ToyRobotSimulator.TextAppServices.csproj", "{5BD05722-7289-4CAA-894D-D5F112CC4EAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.TextAppInterfaces", "ToyRobotSimulator.TextAppInterfaces\ToyRobotSimulator.TextAppInterfaces.csproj", "{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.TextAppInterfaces", "ToyRobotSimulator.TextAppInterfaces\ToyRobotSimulator.TextAppInterfaces.csproj", "{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
