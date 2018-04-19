@@ -13,11 +13,11 @@ namespace ToyRobotSimulator.AppServices
         {
             _commandOptions = new List<ICommandOption>
             {
-                new PlaceCommand(commandTextValidator, userInteractionService),
-                new LeftCommand(commandTextValidator, userInteractionService),
+                new PlaceCommand(userInteractionService),
+                new LeftCommand(userInteractionService),
                 new MoveCommand(commandTextValidator, userInteractionService),
-                new RightCommand(commandTextValidator, userInteractionService),
-                new ReportCommand(commandTextValidator, userInteractionService),
+                new RightCommand(userInteractionService),
+                new ReportCommand(userInteractionService),
                 new QuitCommand(userInteractionService),
                 new UnknownCommand(userInteractionService)
             };
@@ -26,7 +26,6 @@ namespace ToyRobotSimulator.AppServices
         public void Execute(Command command, ToyRobot toyRobot)
         {
             _commandOptions.First(co => co.IsMatch(command)).Execute(command, toyRobot);
-
         }
     }
 }

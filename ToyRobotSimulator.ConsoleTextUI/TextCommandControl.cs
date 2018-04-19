@@ -3,13 +3,13 @@ using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.ConsoleTextUI
 {
-    public class CommandControl
+    public class TextCommandControl
     {
         private readonly ICommandTextExecutor _commandTextExecutor;
         private readonly IUserInteractionByTextService _userInteractionByTextService;
         private readonly ToyRobot _toyRobot;
 
-        public CommandControl(ICommandTextExecutor commandTextExecutor, IUserInteractionByTextService userInteractionByTextService, ToyRobot toyRobot)
+        public TextCommandControl(ICommandTextExecutor commandTextExecutor, IUserInteractionByTextService userInteractionByTextService, ToyRobot toyRobot)
         {
             _commandTextExecutor = commandTextExecutor;
             _userInteractionByTextService = userInteractionByTextService;

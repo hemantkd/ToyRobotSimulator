@@ -1,18 +1,15 @@
 ﻿using ToyRobotSimulator.AppInterfaces;
-using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class PlaceCommand : ICommandOption
     {
-        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
         public string CommandName => nameof(Command.Place);
 
-        public PlaceCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
+        public PlaceCommand(IUserInteractionService userInteractionService)
         {
-            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
@@ -27,18 +24,9 @@ namespace ToyRobotSimulator.AppServices
             int y = _userInteractionService.RequestYCoordinate();
             Direction f = _userInteractionService.RequestDirectionFacing();
 
-            var placeCommandText = BuildPlaceCommandTextWithParameters(x, y, f);
-
-            if (!_commandTextValidator.IsValid(placeCommandText)) return;
-
             toyRobot.SetPosition(x, y, f); // Perform related action on the Toy Robot
 
             _userInteractionService.PrintCommandExecuted(CommandName);
-        }
-
-        private string BuildPlaceCommandTextWithParameters(int x, int y, Direction f)
-        {
-            return $"{CommandName} {x},{y},{f.ToString().ToUpperInvariant()}";
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ToyRobotSimulator.AppServices
         public Command GetCommand()
         {
             var stringBuilder = new StringBuilder()
-                .AppendLine("\nSelect Your Command")
+                .AppendLine("\n\nSelect Your Command")
                 .AppendLine("-----------------------");
 
             var commands = Enum.GetValues(typeof(Command)).Cast<Command>().ToList();
@@ -63,7 +63,7 @@ namespace ToyRobotSimulator.AppServices
                 }
                 catch (Exception)
                 {
-                    PrintInvalidSelection();
+                    PrintText("\nInvalid selection. Please try again... => ");
                 }
             }
         }
@@ -118,11 +118,6 @@ namespace ToyRobotSimulator.AppServices
 
             Console.Clear();
             return true;
-        }
-
-        public void PrintInvalidSelection()
-        {
-            PrintText("\nInvalid selection. Please try again... => ");
         }
 
         public void PrintCommandExecuted(string commandName)

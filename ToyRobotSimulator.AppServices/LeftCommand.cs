@@ -1,18 +1,13 @@
 ﻿using ToyRobotSimulator.AppInterfaces;
-using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class LeftCommand : ICommandOption
     {
-        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
-        public string CommandName => nameof(Command.Left);
-
-        public LeftCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
+        public LeftCommand(IUserInteractionService userInteractionService)
         {
-            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
@@ -25,13 +20,9 @@ namespace ToyRobotSimulator.AppServices
         {
             if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
 
-            var leftCommandText = CommandName;
-
-            if (!_commandTextValidator.IsValid(leftCommandText)) return;
-
             toyRobot.RotateLeft(); // Perform related action on the Toy Robot
 
-            _userInteractionService.PrintCommandExecuted(CommandName);
+            _userInteractionService.PrintCommandExecuted(commandName: nameof(Command.Left));
         }
     }
 }
