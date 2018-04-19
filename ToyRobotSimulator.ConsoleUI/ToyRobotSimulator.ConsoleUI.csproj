@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ToyRobotSimulator.AppInterfaces\ToyRobotSimulator.AppInterfaces.csproj" />
     <ProjectReference Include="..\ToyRobotSimulator.AppServices\ToyRobotSimulator.AppServices.csproj" />
+    <ProjectReference Include="..\ToyRobotSimulator.TextAppServices\ToyRobotSimulator.TextAppServices.csproj" />
     <ProjectReference Include="..\ToyRobotSimulator\ToyRobotSimulator.csproj" />
   </ItemGroup>
 

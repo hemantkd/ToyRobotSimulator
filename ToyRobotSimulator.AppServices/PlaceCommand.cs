@@ -1,4 +1,5 @@
 ﻿using ToyRobotSimulator.AppInterfaces;
+using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {

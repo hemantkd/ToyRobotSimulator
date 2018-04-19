@@ -1,4 +1,5 @@
 ﻿using ToyRobotSimulator.AppServices;
+using ToyRobotSimulator.TextAppServices;
 
 namespace ToyRobotSimulator.ConsoleUI
 {

@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using ToyRobotSimulator.AppInterfaces;
+using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class UserInteractionService : IUserInteractionService
     {
         private readonly ICommandTextValidator _commandTextValidator;
-        
-        private int _x;
-        private int _y;
 
         public UserInteractionService(ICommandTextValidator commandTextValidator)
         {
@@ -77,13 +74,13 @@ namespace ToyRobotSimulator.AppServices
             {
                 PrintText("\nEnter the parameter Y for the PLACE command [0-5] => ");
 
-                if (!YCoordinateIsValid())
+                if (!_commandTextValidator.TryParseYParameter(GetKeyFromUser(), out int y))
                 {
                     PrintText("\nInvalid value entered for Y. Please try again...\n");
                 }
                 else
                 {
-                    return _y;
+                    return y;
                 }
             }
         }
@@ -94,13 +91,13 @@ namespace ToyRobotSimulator.AppServices
             {
                 PrintText("\nEnter the parameter X for the PLACE command [0-5] => ");
 
-                if (!XCoordinateIsValid())
+                if (!_commandTextValidator.TryParseXParameter(GetKeyFromUser(), out int x))
                 {
                     PrintText("\nInvalid value entered for X. Please try again...\n");
                 }
                 else
                 {
-                    return _x;
+                    return x;
                 }
             }
         }
@@ -143,31 +140,9 @@ namespace ToyRobotSimulator.AppServices
             return enumList[index: enumKey - 1];
         }
 
-        //private Command MapKeyToCommand(int commandKey, IReadOnlyList<Command> commands)
-        //{
-        //    return commands[index: commandKey - 1];
-        //}
-
-        //private Direction MapKeyToDirection(int directionKey, IReadOnlyList<Direction> directions)
-        //{
-        //    return directions[index: directionKey - 1];
-        //}
-
         private int GetDirectionKeyFromUser()
         {
             return int.Parse(GetKeyFromUser());
-        }
-
-        private bool XCoordinateIsValid()
-        {
-            return int.TryParse(GetKeyFromUser(), NumberStyles.Integer, CultureInfo.InvariantCulture, out _x)
-                   && _commandTextValidator.XParameterIsValid(_x.ToString());
-        }
-
-        private bool YCoordinateIsValid()
-        {
-            return int.TryParse(GetKeyFromUser(), NumberStyles.Integer, CultureInfo.InvariantCulture, out _y)
-                   && _commandTextValidator.YParameterIsValid(_y.ToString());
         }
     }
 }

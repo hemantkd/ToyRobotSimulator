@@ -1,8 +1,9 @@
 ﻿using NUnit.Framework;
-using ToyRobotSimulator.AppServices;
+using ToyRobotSimulator.TextAppServices;
 
 namespace ToyRobotSimulator.Tests
 {
+    // TODO: Refactor code duplication
     [TestFixture]
     public class CommandValidatorTests
     {

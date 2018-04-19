@@ -9,9 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.ConsoleUI", "ToyRobotSimulator.ConsoleUI\ToyRobotSimulator.ConsoleUI.csproj", "{C860FF99-AA6B-4ABA-92B2-C42033CB282E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.AppInterfaces", "ToyRobotSimulator.AppInterfaces\ToyRobotSimulator.AppInterfaces.csproj", "{74FE5F58-913D-4EFA-8373-43F909A925A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.AppInterfaces", "ToyRobotSimulator.AppInterfaces\ToyRobotSimulator.AppInterfaces.csproj", "{74FE5F58-913D-4EFA-8373-43F909A925A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.AppServices", "ToyRobotSimulator.AppServices\ToyRobotSimulator.AppServices.csproj", "{0C8E330D-93A5-4481-9A04-D881830ACEF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.AppServices", "ToyRobotSimulator.AppServices\ToyRobotSimulator.AppServices.csproj", "{0C8E330D-93A5-4481-9A04-D881830ACEF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.ConsoleTextUI", "ToyRobotSimulator.ConsoleTextUI\ToyRobotSimulator.ConsoleTextUI.csproj", "{791F828A-C6F2-46CE-A82F-63240D560A6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.TextAppServices", "ToyRobotSimulator.TextAppServices\ToyRobotSimulator.TextAppServices.csproj", "{5BD05722-7289-4CAA-894D-D5F112CC4EAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.TextAppInterfaces", "ToyRobotSimulator.TextAppInterfaces\ToyRobotSimulator.TextAppInterfaces.csproj", "{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{0C8E330D-93A5-4481-9A04-D881830ACEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C8E330D-93A5-4481-9A04-D881830ACEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C8E330D-93A5-4481-9A04-D881830ACEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{791F828A-C6F2-46CE-A82F-63240D560A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{791F828A-C6F2-46CE-A82F-63240D560A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{791F828A-C6F2-46CE-A82F-63240D560A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{791F828A-C6F2-46CE-A82F-63240D560A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BD05722-7289-4CAA-894D-D5F112CC4EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD05722-7289-4CAA-894D-D5F112CC4EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD05722-7289-4CAA-894D-D5F112CC4EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD05722-7289-4CAA-894D-D5F112CC4EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

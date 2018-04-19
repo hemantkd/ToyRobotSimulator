@@ -1,12 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ToyRobotSimulator.AppInterfaces\ToyRobotSimulator.AppInterfaces.csproj" />
+    <ProjectReference Include="..\ToyRobotSimulator.AppServices\ToyRobotSimulator.AppServices.csproj" />
     <ProjectReference Include="..\ToyRobotSimulator.TextAppInterfaces\ToyRobotSimulator.TextAppInterfaces.csproj" />
+    <ProjectReference Include="..\ToyRobotSimulator.TextAppServices\ToyRobotSimulator.TextAppServices.csproj" />
   </ItemGroup>
 
 </Project>
