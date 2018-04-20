@@ -18,7 +18,7 @@ namespace ToyRobotSimulator.ConsoleUI
 
         public void Start()
         {
-            while (!_toyRobot.Deactivate)
+            while (_userInteractionService.Quit == false)
             {
                 Command command = RequestCommandFromUser();
                 _commandExecutor.Execute(command, _toyRobot);

@@ -18,7 +18,7 @@ namespace ToyRobotSimulator.AppServices
 
         public void Execute(Command command, ToyRobot toyRobot)
         {
-            toyRobot.Deactivate = true;
+            _userInteractionService.Quit = true;
             _userInteractionService.PrintText("\n");
         }
     }

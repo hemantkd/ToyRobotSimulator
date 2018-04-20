@@ -17,5 +17,6 @@
         bool ClearScreenIfToyRobotIsDeactive(ToyRobot toyRobot);
 
         void PrintCommandExecuted(string commandName);
+        bool Quit { get; set; }
     }
 }

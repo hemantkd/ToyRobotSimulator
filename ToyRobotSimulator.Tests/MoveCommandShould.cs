@@ -17,9 +17,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin + 1));
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.North));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMin + 1));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.North));
         }
 
         [Test]
@@ -32,9 +32,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMax - 1));
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.South));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMax - 1));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.South));
         }
 
         [Test]
@@ -47,9 +47,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMax - 1));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.West));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMax - 1));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.West));
         }
 
         [Test]
@@ -62,9 +62,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin + 1));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.East));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMin + 1));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.East));
         }
 
         [Test]
@@ -77,9 +77,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMax));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.East));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMax));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.East));
         }
 
         [Test]
@@ -92,9 +92,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.West));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.West));
         }
 
         [Test]
@@ -107,9 +107,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMax));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.North));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMax));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.North));
         }
 
         [Test]
@@ -122,9 +122,9 @@ namespace ToyRobotSimulator.Tests
             );
             toyRobot.Move();
 
-            Assert.That(toyRobot.XCoordinate, Is.EqualTo(XMin));
-            Assert.That(toyRobot.YCoordinate, Is.EqualTo(YMin));
-            Assert.That(toyRobot.Facing, Is.EqualTo(Direction.South));
+            Assert.That(toyRobot.Position.XCoordinate, Is.EqualTo(XMin));
+            Assert.That(toyRobot.Position.YCoordinate, Is.EqualTo(YMin));
+            Assert.That(toyRobot.Position.Facing, Is.EqualTo(Direction.South));
         }
     }
 }

@@ -6,74 +6,67 @@
 
         public ToyRobot(int xCoordinate, int yCoordinate, Direction facing)
         {
-            SetPosition(xCoordinate, yCoordinate, facing);
+            Position = new Position(xCoordinate, yCoordinate, facing);
         }
 
         public ToyRobot()
-        {}
+        { }
 
-        public bool Deactivate { get; set; } = false;
-
-        public Direction Facing { get; private set; }
-
-        public int YCoordinate { get; private set; }
-
-        public int XCoordinate { get; private set; }
+        public Position Position { get; set; }
 
         public void SetPosition(int xCoordinate, int yCoordinate, Direction facing)
         {
-            XCoordinate = xCoordinate;
-            YCoordinate = yCoordinate;
-            Facing = facing;
+            Position = new Position(xCoordinate, yCoordinate, facing);
         }
+
         public void Move()
         {
-            switch (Facing)
+            switch (Position.Facing)
             {
-                case Direction.East: if(IsNotOnEasternBoundary()) XCoordinate++;
+                case Direction.East: if(IsNotOnEasternBoundary()) Position.XCoordinate++;
                     break;
-                case Direction.West: if(IsNotOnWesternBoundary()) XCoordinate--;
+                case Direction.West: if(IsNotOnWesternBoundary()) Position.XCoordinate--;
                     break;
-                case Direction.North: if(IsNotOnNorthernBoundary()) YCoordinate++;
+                case Direction.North: if(IsNotOnNorthernBoundary()) Position.YCoordinate++;
                     break;
-                case Direction.South: if(IsNotOnSouthernBoundary()) YCoordinate--;
+                case Direction.South: if(IsNotOnSouthernBoundary()) Position.YCoordinate--;
                     break;
             }
         }
 
         public void RotateLeft()
         {
-            Facing = Facing.RotateLeft();
+            Position.Facing = Position.Facing.RotateLeft();
         }
 
         public void RotateRight()
         {
-            Facing = Facing.RotateRight();
+            Position.Facing = Position.Facing.RotateRight();
         }
 
         private bool IsNotOnSouthernBoundary()
         {
-            return YCoordinate != YMin;
+            return Position.YCoordinate != YMin;
         }
 
         private bool IsNotOnNorthernBoundary()
         {
-            return YCoordinate != YMax;
+            return Position.YCoordinate != YMax;
         }
 
         private bool IsNotOnWesternBoundary()
         {
-            return XCoordinate != XMin;
+            return Position.XCoordinate != XMin;
         }
 
         private bool IsNotOnEasternBoundary()
         {
-            return XCoordinate != XMax;
+            return Position.XCoordinate != XMax;
         }
 
         public string Report()
         {
-            return $"Output: {XCoordinate},{YCoordinate},{Facing.ToString().ToUpperInvariant()}";
+            return $"Output: {Position.XCoordinate},{Position.YCoordinate},{$"{Position.Facing}".ToUpperInvariant()}";
         }
     }
 }

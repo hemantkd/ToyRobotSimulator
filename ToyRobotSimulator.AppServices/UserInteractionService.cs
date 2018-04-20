@@ -114,7 +114,7 @@ namespace ToyRobotSimulator.AppServices
 
         public bool ClearScreenIfToyRobotIsDeactive(ToyRobot toyRobot)
         {
-            if (toyRobot != null && !toyRobot.Deactivate) return false;
+            if (toyRobot != null && Quit == false) return false;
 
             Console.Clear();
             return true;
@@ -124,6 +124,8 @@ namespace ToyRobotSimulator.AppServices
         {
             PrintText($"\n{commandName.ToUpperInvariant()} Command Executed!\n");
         }
+
+        public bool Quit { get; set; }
 
         private string GetMenuOptionFormat<T>(T enumValue)
         {
