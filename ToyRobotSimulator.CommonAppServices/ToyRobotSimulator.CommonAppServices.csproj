@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ToyRobotSimulator.AppInterfaces\ToyRobotSimulator.AppInterfaces.csproj" />
     <ProjectReference Include="..\ToyRobotSimulator.TextAppInterfaces\ToyRobotSimulator.TextAppInterfaces.csproj" />
   </ItemGroup>
 

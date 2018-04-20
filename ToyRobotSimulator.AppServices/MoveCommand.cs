@@ -1,17 +1,16 @@
 ﻿using ToyRobotSimulator.AppInterfaces;
+using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class MoveCommand : ICommandOption
     {
-        private readonly ICommandValidator _commandValidator;
+        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
-        public string CommandName => nameof(Command.Move);
-
-        public MoveCommand(ICommandValidator commandValidator, IUserInteractionService userInteractionService)
+        public MoveCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
         {
-            _commandValidator = commandValidator;
+            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
@@ -24,13 +23,9 @@ namespace ToyRobotSimulator.AppServices
         {
             if (_userInteractionService.ClearScreenIfToyRobotIsDeactive(toyRobot)) return;
 
-            var moveCommandText = CommandName;
-
-            if (!_commandValidator.IsValid(moveCommandText)) return;
-
             toyRobot.Move(); // Perform related action on the Toy Robot
 
-            _userInteractionService.PrintCommandExecuted(CommandName);
+            _userInteractionService.PrintCommandExecuted(nameof(Command.Move));
         }
     }
 }
