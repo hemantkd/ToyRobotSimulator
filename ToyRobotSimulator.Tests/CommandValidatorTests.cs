@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using ToyRobotSimulator.CommonAppServices;
 using ToyRobotSimulator.TextAppServices;
 
 namespace ToyRobotSimulator.Tests

@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using ToyRobotSimulator.TextAppInterfaces;
 
-namespace ToyRobotSimulator.TextAppServices
+namespace ToyRobotSimulator.CommonAppServices
 {
     public class CommandTextValidator : ICommandTextValidator
     {
