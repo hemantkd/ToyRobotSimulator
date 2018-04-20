@@ -2,7 +2,6 @@
 {
     public interface ICommandTextValidator
     {
-        bool IsValid(string commandText);
         bool TryParseXParameter(string xParameter, out int x);
         bool TryParseYParameter(string yParameter, out int y);
         bool IsPlaceCommand(string commandText);

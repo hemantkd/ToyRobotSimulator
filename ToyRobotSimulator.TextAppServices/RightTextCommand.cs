@@ -2,7 +2,7 @@
 
 namespace ToyRobotSimulator.TextAppServices
 {
-    internal class RightTextCommand : ICommandTextOption
+    public class RightTextCommand : ICommandTextOption
     {
         private readonly ICommandTextValidator _commandTextValidator;
 

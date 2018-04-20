@@ -4,6 +4,8 @@ namespace ToyRobotSimulator.TextAppServices
 {
     public class PlaceTextCommand : ICommandTextOption
     {
+        private int _x, _y;
+        private Direction _f;
         private readonly ICommandTextValidator _commandTextValidator;
 
         public PlaceTextCommand(ICommandTextValidator commandTextValidator)
@@ -13,14 +15,13 @@ namespace ToyRobotSimulator.TextAppServices
 
         public bool IsMatch(string commandText)
         {
-            return _commandTextValidator.IsPlaceCommand(commandText);
+            return _commandTextValidator.IsPlaceCommand(commandText) &&
+                   _commandTextValidator.PlaceCommandIsValid(commandText: commandText, x: out _x, y: out _y, f: out _f);
         }
 
         public void Execute(string commandText, ToyRobot toyRobot)
         {
-            if (!_commandTextValidator.PlaceCommandIsValid(commandText, out int x, out int y, out Direction f)) return;
-
-            toyRobot.SetPosition(xCoordinate: x, yCoordinate: y, facing: f);
+            toyRobot.SetPosition(xCoordinate: _x, yCoordinate: _y, facing: _f);
         }
     }
 }

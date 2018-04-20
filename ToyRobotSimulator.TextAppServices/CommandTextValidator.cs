@@ -7,15 +7,6 @@ namespace ToyRobotSimulator.TextAppServices
 {
     public class CommandTextValidator : ICommandTextValidator
     {
-        public bool IsValid(string commandText)
-        {
-            return IsMoveCommand(commandText) ||
-                   IsLeftCommand(commandText) ||
-                   IsRightCommand(commandText) ||
-                   IsReportCommand(commandText) ||
-                   (IsPlaceCommand(commandText) && PlaceCommandIsValid(commandText, out _, out _, out _));
-        }
-
         public bool IsReportCommand(string commandText)
         {
             return commandText.Equals(nameof(Command.Report), StringComparison.OrdinalIgnoreCase);
