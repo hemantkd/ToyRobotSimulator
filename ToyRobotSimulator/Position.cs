@@ -9,8 +9,8 @@
             Facing = facing;
         }
 
-        public Direction Facing { get; set; }
-        public int YCoordinate { get; set; }
         public int XCoordinate { get; set; }
+        public int YCoordinate { get; set; }
+        public Direction Facing { get; set; }
     }
 }

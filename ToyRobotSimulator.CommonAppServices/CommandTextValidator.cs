@@ -8,20 +8,13 @@ namespace ToyRobotSimulator.CommonAppServices
         public bool TryParseXParameter(string xParameter, out int x)
         {
             return
-                int.TryParse(xParameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out x)
-                && IsInTheRange(x);
+                int.TryParse(xParameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out x);
         }
 
         public bool TryParseYParameter(string yParameter, out int y)
         {
             return
-                int.TryParse(yParameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out y)
-                && IsInTheRange(y);
-        }
-
-        private bool IsInTheRange(int parameter)
-        {
-            return parameter >= 0 && parameter <= 5;
+                int.TryParse(yParameter, NumberStyles.Integer, CultureInfo.InvariantCulture, out y);
         }
     }
 }

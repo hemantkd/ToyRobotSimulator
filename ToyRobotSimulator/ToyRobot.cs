@@ -1,12 +1,10 @@
 ﻿namespace ToyRobotSimulator
 {
-    public class ToyRobot
+    public class ToyRobot : Boundary
     {
-        private const int XMin = 0, YMin = 0, XMax = 5, YMax = 5;
-
         public ToyRobot(int xCoordinate, int yCoordinate, Direction facing)
         {
-            Position = new Position(xCoordinate, yCoordinate, facing);
+            SetPosition(xCoordinate, yCoordinate, facing);
         }
 
         public ToyRobot()
@@ -16,7 +14,10 @@
 
         public void SetPosition(int xCoordinate, int yCoordinate, Direction facing)
         {
-            Position = new Position(xCoordinate, yCoordinate, facing);
+            if (XCoordinateIsInRange(xCoordinate) && YCoordinateIsInRange(yCoordinate))
+            {
+                Position = new Position(xCoordinate, yCoordinate, facing);
+            }
         }
 
         public void Move()
@@ -44,6 +45,11 @@
             Position.Facing = Position.Facing.RotateRight();
         }
 
+        public string Report()
+        {
+            return $"Output: {Position.XCoordinate},{Position.YCoordinate},{$"{Position.Facing}".ToUpperInvariant()}";
+        }
+
         private bool IsNotOnSouthernBoundary()
         {
             return Position.YCoordinate != YMin;
@@ -62,11 +68,6 @@
         private bool IsNotOnEasternBoundary()
         {
             return Position.XCoordinate != XMax;
-        }
-
-        public string Report()
-        {
-            return $"Output: {Position.XCoordinate},{Position.YCoordinate},{$"{Position.Facing}".ToUpperInvariant()}";
         }
     }
 }

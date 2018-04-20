@@ -7,7 +7,7 @@ using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
-    public class UserInteractionService : IUserInteractionService
+    public class UserInteractionService : Boundary, IUserInteractionService
     {
         private readonly ICommandTextValidator _commandTextValidator;
 
@@ -68,36 +68,38 @@ namespace ToyRobotSimulator.AppServices
             }
         }
 
-        public int RequestYCoordinate()
-        {
-            while (true)
-            {
-                PrintText("\nEnter the parameter Y for the PLACE command [0-5] => ");
-
-                if (!_commandTextValidator.TryParseYParameter(GetKeyFromUser(), out int y))
-                {
-                    PrintText("\nInvalid value entered for Y. Please try again...\n");
-                }
-                else
-                {
-                    return y;
-                }
-            }
-        }
-
         public int RequestXCoordinate()
         {
             while (true)
             {
                 PrintText("\nEnter the parameter X for the PLACE command [0-5] => ");
 
-                if (!_commandTextValidator.TryParseXParameter(GetKeyFromUser(), out int x))
+                if (!_commandTextValidator.TryParseXParameter(GetKeyFromUser(), out int x) ||
+                    !XCoordinateIsInRange(x))
                 {
                     PrintText("\nInvalid value entered for X. Please try again...\n");
                 }
                 else
                 {
                     return x;
+                }
+            }
+        }
+
+        public int RequestYCoordinate()
+        {
+            while (true)
+            {
+                PrintText("\nEnter the parameter Y for the PLACE command [0-5] => ");
+
+                if (!_commandTextValidator.TryParseYParameter(GetKeyFromUser(), out int y) ||
+                    !YCoordinateIsInRange(y))
+                {
+                    PrintText("\nInvalid value entered for Y. Please try again...\n");
+                }
+                else
+                {
+                    return y;
                 }
             }
         }

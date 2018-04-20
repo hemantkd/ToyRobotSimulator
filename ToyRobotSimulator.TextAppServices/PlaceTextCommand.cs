@@ -4,7 +4,7 @@ using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.TextAppServices
 {
-    public class PlaceTextCommand : ICommandTextOption
+    public class PlaceTextCommand : Boundary, ICommandTextOption
     {
         private int _x, _y;
         private Direction _f;
@@ -34,7 +34,9 @@ namespace ToyRobotSimulator.TextAppServices
                 string[] parameters = SplitIntoIndividualParameters(commandSplit);
 
                 if (!_commandTextValidator.TryParseXParameter(parameters[0], out x) ||
+                    !XCoordinateIsInRange(x) ||
                     !_commandTextValidator.TryParseYParameter(parameters[1], out y) ||
+                    !YCoordinateIsInRange(y) ||
                     !TryParseDirection(parameters[2], out f))
                 {
                     SetDefaults(out x, out y, out f);
@@ -49,6 +51,7 @@ namespace ToyRobotSimulator.TextAppServices
 
             return true;
         }
+
         private bool TryParseDirection(string directionParameter, out Direction f)
         {
             var directions = Enum.GetValues(typeof(Direction))
@@ -69,7 +72,6 @@ namespace ToyRobotSimulator.TextAppServices
 
             return true;
         }
-
 
         private string[] SplitIntoIndividualParameters(string[] commandSplit)
         {
