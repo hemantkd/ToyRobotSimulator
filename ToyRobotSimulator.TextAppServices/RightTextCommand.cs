@@ -1,19 +1,13 @@
-﻿using ToyRobotSimulator.TextAppInterfaces;
+﻿using System;
+using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.TextAppServices
 {
     public class RightTextCommand : ICommandTextOption
     {
-        private readonly ICommandTextValidator _commandTextValidator;
-
-        public RightTextCommand(ICommandTextValidator commandTextValidator)
-        {
-            _commandTextValidator = commandTextValidator;
-        }
-
         public bool IsMatch(string commandText)
         {
-            return _commandTextValidator.IsRightCommand(commandText);
+            return commandText.Equals(nameof(Command.Right), StringComparison.OrdinalIgnoreCase);
         }
 
         public void Execute(string commandText, ToyRobot toyRobot)

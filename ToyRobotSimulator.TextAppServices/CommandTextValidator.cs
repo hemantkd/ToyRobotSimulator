@@ -7,26 +7,6 @@ namespace ToyRobotSimulator.TextAppServices
 {
     public class CommandTextValidator : ICommandTextValidator
     {
-        public bool IsReportCommand(string commandText)
-        {
-            return commandText.Equals(nameof(Command.Report), StringComparison.OrdinalIgnoreCase);
-        }
-
-        public bool IsRightCommand(string commandText)
-        {
-            return commandText.Equals(nameof(Command.Right), StringComparison.OrdinalIgnoreCase);
-        }
-
-        public bool IsMoveCommand(string commandText)
-        {
-            return commandText.Equals(nameof(Command.Move), StringComparison.OrdinalIgnoreCase);
-        }
-
-        public bool IsLeftCommand(string commandText)
-        {
-            return commandText.Equals(nameof(Command.Left), StringComparison.OrdinalIgnoreCase);
-        }
-
         public bool PlaceCommandIsValid(string commandText, out int x, out int y, out Direction f)
         {
             try
@@ -84,11 +64,6 @@ namespace ToyRobotSimulator.TextAppServices
             f = (Direction)(index + 1);
 
             return true;
-        }
-
-        public bool IsPlaceCommand(string commandText)
-        {
-            return commandText.StartsWith(nameof(Command.Place), StringComparison.OrdinalIgnoreCase);
         }
 
         private bool IsInTheRange(int parameter)

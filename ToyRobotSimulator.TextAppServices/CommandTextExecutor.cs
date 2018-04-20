@@ -13,10 +13,10 @@ namespace ToyRobotSimulator.TextAppServices
             _commandTextOptions = new List<ICommandTextOption>
             {
                 new PlaceTextCommand(commandTextValidator),
-                new LeftTextCommand(commandTextValidator),
-                new MoveTextCommand(commandTextValidator),
-                new RightTextCommand(commandTextValidator),
-                new ReportTextCommand(commandTextValidator, userInteractionByTextService),
+                new LeftTextCommand(),
+                new MoveTextCommand(),
+                new RightTextCommand(),
+                new ReportTextCommand(userInteractionByTextService),
                 new UnknownTextCommand()
             };
         }

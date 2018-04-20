@@ -1,4 +1,5 @@
-﻿using ToyRobotSimulator.TextAppInterfaces;
+﻿using System;
+using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.TextAppServices
 {
@@ -15,7 +16,7 @@ namespace ToyRobotSimulator.TextAppServices
 
         public bool IsMatch(string commandText)
         {
-            return _commandTextValidator.IsPlaceCommand(commandText) &&
+            return commandText.StartsWith(nameof(Command.Place), StringComparison.OrdinalIgnoreCase) &&
                    _commandTextValidator.PlaceCommandIsValid(commandText: commandText, x: out _x, y: out _y, f: out _f);
         }
 

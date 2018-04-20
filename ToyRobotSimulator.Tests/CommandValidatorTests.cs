@@ -3,23 +3,20 @@ using ToyRobotSimulator.TextAppServices;
 
 namespace ToyRobotSimulator.Tests
 {
-    // TODO: Refactor code duplication
     [TestFixture]
     public class CommandValidatorTests
     {
-        private readonly CommandTextValidator _commandTextValidator;
         private readonly PlaceTextCommand _placeTextCommand;
 
         public CommandValidatorTests()
         {
-            _commandTextValidator = new CommandTextValidator();
-            _placeTextCommand = new PlaceTextCommand(_commandTextValidator);
+            _placeTextCommand = new PlaceTextCommand(new CommandTextValidator());
         }
 
         [Test]
         public void ShouldReturnTrue_ForMoveCommand()
         {
-            var moveCommand = new MoveTextCommand(_commandTextValidator);
+            var moveCommand = new MoveTextCommand();
 
             Assert.IsTrue(moveCommand.IsMatch("MOVE"));
         }
@@ -27,7 +24,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForLeftCommand()
         {
-            var leftCommand = new LeftTextCommand(_commandTextValidator);
+            var leftCommand = new LeftTextCommand();
 
             Assert.IsTrue(leftCommand.IsMatch("LEFT"));
         }
@@ -35,7 +32,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForRightCommand()
         {
-            var rightCommand = new RightTextCommand(_commandTextValidator);
+            var rightCommand = new RightTextCommand();
 
             Assert.IsTrue(rightCommand.IsMatch("RIGHT"));
         }
@@ -43,7 +40,7 @@ namespace ToyRobotSimulator.Tests
         [Test]
         public void ShouldReturnTrue_ForReportCommand()
         {
-            var reportCommand = new ReportTextCommand(_commandTextValidator, new UserInteractionByTextService());
+            var reportCommand = new ReportTextCommand(new UserInteractionByTextService());
 
             Assert.IsTrue(reportCommand.IsMatch("REPORT"));
         }

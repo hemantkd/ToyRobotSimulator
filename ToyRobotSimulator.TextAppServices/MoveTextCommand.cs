@@ -1,19 +1,13 @@
-﻿using ToyRobotSimulator.TextAppInterfaces;
+﻿using System;
+using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.TextAppServices
 {
     public class MoveTextCommand : ICommandTextOption
     {
-        private readonly ICommandTextValidator _commandTextValidator;
-
-        public MoveTextCommand(ICommandTextValidator commandTextValidator)
-        {
-            _commandTextValidator = commandTextValidator;
-        }
-
         public bool IsMatch(string commandText)
         {
-            return _commandTextValidator.IsMoveCommand(commandText);
+            return commandText.Equals(nameof(Command.Move), StringComparison.OrdinalIgnoreCase);
         }
 
         public void Execute(string commandText, ToyRobot toyRobot)
