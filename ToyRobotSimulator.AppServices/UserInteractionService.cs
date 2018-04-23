@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ToyRobotSimulator.AppInterfaces;
-using ToyRobotSimulator.TextAppInterfaces;
+using ToyRobotSimulator.CommonAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {

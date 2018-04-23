@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using ToyRobotSimulator.AppInterfaces;
-using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
@@ -9,13 +8,13 @@ namespace ToyRobotSimulator.AppServices
     {
         private readonly List<ICommandOption> _commandOptions;
 
-        public CommandExecutor(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
+        public CommandExecutor(IUserInteractionService userInteractionService)
         {
             _commandOptions = new List<ICommandOption>
             {
                 new PlaceCommand(userInteractionService),
                 new LeftCommand(userInteractionService),
-                new MoveCommand(commandTextValidator, userInteractionService),
+                new MoveCommand(userInteractionService),
                 new RightCommand(userInteractionService),
                 new ReportCommand(userInteractionService),
                 new QuitCommand(userInteractionService),

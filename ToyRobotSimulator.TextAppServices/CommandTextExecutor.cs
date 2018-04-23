@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ToyRobotSimulator.CommonAppInterfaces;
 using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.TextAppServices

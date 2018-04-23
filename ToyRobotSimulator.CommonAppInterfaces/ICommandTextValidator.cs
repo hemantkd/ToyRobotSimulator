@@ -1,4 +1,4 @@
-﻿namespace ToyRobotSimulator.TextAppInterfaces
+﻿namespace ToyRobotSimulator.CommonAppInterfaces
 {
     public interface ICommandTextValidator
     {

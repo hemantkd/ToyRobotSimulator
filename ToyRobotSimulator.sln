@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.TextAppSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.TextAppInterfaces", "ToyRobotSimulator.TextAppInterfaces\ToyRobotSimulator.TextAppInterfaces.csproj", "{3EF8C03A-D234-4FF4-A512-A7AD3CECE836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.CommonAppServices", "ToyRobotSimulator.CommonAppServices\ToyRobotSimulator.CommonAppServices.csproj", "{636EAF98-53A6-4692-A08E-A82B0FA4FD16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.CommonAppServices", "ToyRobotSimulator.CommonAppServices\ToyRobotSimulator.CommonAppServices.csproj", "{636EAF98-53A6-4692-A08E-A82B0FA4FD16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.CommonAppInterfaces", "ToyRobotSimulator.CommonAppInterfaces\ToyRobotSimulator.CommonAppInterfaces.csproj", "{77B89DC8-14AE-44CC-B367-E154A19224D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{636EAF98-53A6-4692-A08E-A82B0FA4FD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{636EAF98-53A6-4692-A08E-A82B0FA4FD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{636EAF98-53A6-4692-A08E-A82B0FA4FD16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B89DC8-14AE-44CC-B367-E154A19224D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B89DC8-14AE-44CC-B367-E154A19224D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B89DC8-14AE-44CC-B367-E154A19224D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B89DC8-14AE-44CC-B367-E154A19224D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

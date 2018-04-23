@@ -1,16 +1,13 @@
 ﻿using ToyRobotSimulator.AppInterfaces;
-using ToyRobotSimulator.TextAppInterfaces;
 
 namespace ToyRobotSimulator.AppServices
 {
     public class MoveCommand : ICommandOption
     {
-        private readonly ICommandTextValidator _commandTextValidator;
         private readonly IUserInteractionService _userInteractionService;
 
-        public MoveCommand(ICommandTextValidator commandTextValidator, IUserInteractionService userInteractionService)
+        public MoveCommand(IUserInteractionService userInteractionService)
         {
-            _commandTextValidator = commandTextValidator;
             _userInteractionService = userInteractionService;
         }
 
