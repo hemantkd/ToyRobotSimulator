@@ -5,11 +5,11 @@ using ToyRobotSimulator.TextAppServices;
 namespace ToyRobotSimulator.Tests
 {
     [TestFixture]
-    public class CommandValidatorTests
+    public class CommandTextValidatorTests
     {
         private readonly PlaceTextCommand _placeTextCommand;
 
-        public CommandValidatorTests()
+        public CommandTextValidatorTests()
         {
             _placeTextCommand = new PlaceTextCommand(new CommandTextValidator());
         }

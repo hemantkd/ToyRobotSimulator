@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace ToyRobotSimulator.Tests
+namespace ToyRobotSimulator.Tests.ToyRobotTests
 {
     [TestFixture]
     public class RightCommandShould
