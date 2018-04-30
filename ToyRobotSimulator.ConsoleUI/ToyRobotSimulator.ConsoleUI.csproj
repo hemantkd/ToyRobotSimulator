@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ToyRobotSimulator.AppInterfaces\ToyRobotSimulator.AppInterfaces.csproj" />
     <ProjectReference Include="..\ToyRobotSimulator.AppServices\ToyRobotSimulator.AppServices.csproj" />
     <ProjectReference Include="..\ToyRobotSimulator.CommonAppServices\ToyRobotSimulator.CommonAppServices.csproj" />
