@@ -10,6 +10,8 @@ namespace ToyRobotSimulator.TextAppServices
         }
 
         public void Execute(string commandText, ToyRobot toyRobot)
-        { }
+        {
+            // Do nothing when executing this command.
+        }
     }
 }
